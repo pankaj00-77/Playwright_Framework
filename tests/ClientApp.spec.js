@@ -1,5 +1,5 @@
 const {test, expect } = require('@playwright/test');//we write this to import the package without this we cannot execute our test cases
-test.only('browser context playwright test', async ({browser})=>{
+test('browser context playwright test', async ({browser})=>{
 
     const context = await browser.newContext();// to open the new fresh browser
     const page =await context.newPage();// to create the page on that browser
@@ -12,7 +12,7 @@ test.only('browser context playwright test', async ({browser})=>{
 
    await page.goto("https://rahulshettyacademy.com/client")//to open that url on that page
     console.log(await page.title());// to get the title of that page
-    await username.fill("rajpal1996kumar@gmail.com");
+    await username.fill("rapal1996kumgmail.com");
     await password.fill("POPpopcon22");
     await login.click();
 
