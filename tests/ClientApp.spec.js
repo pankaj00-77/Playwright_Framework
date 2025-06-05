@@ -1,8 +1,8 @@
 const {test, expect } = require('@playwright/test');//we write this to import the package without this we cannot execute our test cases
 test('clint app login', async ({browser})=>{
 
-      const context = await browser.newContext();
-  const page = await context.newPage();
+      const context = await browser.newContext(); //browser.newContext() → Think of it like creating a new user profile or incognito window......  const context → You store the new browser context in a variable named context.
+  const page = await context.newPage();//context.newPage() → Opens a new tab or page inside that clean browser context. Like typing a URL in a new Chrome incognito window..... await → Because creating a page also takes time.......  const page → You store that new page/tab in a variable so you can interact with it.
  
 
    //js file- Login js, DashboardPage
@@ -51,7 +51,7 @@ test('clint app login', async ({browser})=>{
    await expect(page.locator(".user__name [type='text']").first()).toHaveText(email);
    await page.locator(".action__submit").click();
    await expect(page.locator(".hero-primary")).toHaveText(" Thankyou for the order. ");
-   const orderId = await page.locator(".em-spacer-1 .ng-star-inserted").textContent();
+   const orderId = await page.locator(".em-spacer-1 .ng-star-inserted").first().textContent();
    console.log(orderId);
  
    await page.locator("button[routerlink*='myorders']").click();
