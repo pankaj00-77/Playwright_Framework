@@ -1,14 +1,15 @@
-const {test , expect , request}=  require('@playwright/test');.
+const {test , expect , request}=  require('@playwright/test');
 const {APIUtils} = require('../tests/APIUtils/APIUtils');
 
 const loginPayLoad={userEmail: "rajpal1996kumar@gmail.com", userPassword: "POPpopcon22"}
 let orderPayload = {orders: [{country: "India", productOrderedId: "67a8dde5c0d3e6622a297cc8"}]}
 let orderId;
 let token;
+let response;
 test.beforeAll( async ()=>{
          const apiContext = await request.newContext();//request.newContext() This creates a new API context.....const apiContext = You're saving this context in a variable called apiContext.
-          const APIUtils= new APIUtils(apiContext,loginPayLoad);//because we pass apicontext as a parameter in the APIUtils class
-         const orderId = createOrder(orderPayload);
+          const apiUtils= new APIUtils(apiContext,loginPayLoad);//because we pass apicontext as a parameter in the APIUtils class
+          response = await apiUtils.createOrder(orderPayload);
 
 
          
@@ -30,7 +31,7 @@ test('place the order', async ({page})=>{
 
    page.addInitScript(value =>{
       window.localStorage.setItem('token',value);
-   },token);
+   },  response.token);//and here we call that response.token from APIUtils file
 
 //       const context = await browser.newContext();
 //   const page = await context.newPage();
@@ -90,13 +91,13 @@ test('place the order', async ({page})=>{
  
    for (let i = 0; i < await rows.count(); ++i) {
       const rowOrderId = await rows.nth(i).locator("th").textContent();
-      if (orderId.includes(rowOrderId)) {
+      if (response.orderId.includes(rowOrderId)) {
          await rows.nth(i).locator("button").first().click();
          break;
       }
    }
    const orderIdDetails = await page.locator(".col-text").textContent();
-   expect(orderId.includes(orderIdDetails)).toBeTruthy();
+   expect(response.orderId.includes(orderIdDetails)).toBeTruthy();
 
    page.get
  
