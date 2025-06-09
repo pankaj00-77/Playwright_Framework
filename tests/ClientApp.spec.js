@@ -9,11 +9,11 @@ test('clint app login', async ({browser})=>{
    
    
    await page.goto("https://rahulshettyacademy.com/client");
-   const email = "anshika@gmail.com";
+   const email = "panaraju@gmail.com";
    const productName = 'ZARA COAT 3';
    const products = page.locator(".card-body");
    await page.locator("#userEmail").fill(email);
-   await page.locator("#userPassword").fill("Iamking@000");
+   await page.locator("#userPassword").fill("PANApana2@");
    await page.locator("[value='Login']").click();
    await page.waitForLoadState('networkidle');
    await page.locator(".card-body b").first().waitFor();

@@ -97,8 +97,9 @@ test('place the order', async ({page})=>{
       }
    }
    const orderIdDetails = await page.locator(".col-text").textContent();
+   await page.pause();
    expect(response.orderId.includes(orderIdDetails)).toBeTruthy();
 
-   page.get
+   
  
 });

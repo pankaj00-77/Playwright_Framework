@@ -17,7 +17,7 @@ const config=({// it will save our key value pairs into one variable
     browserName: 'chromium', //it use the chrome browser to run our test cases
     headless : false,
     screenshot: 'on', 
-    trace: 'retain-on-failure',
+    trace: 'on',
 
   },
 
