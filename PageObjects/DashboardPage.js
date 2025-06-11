@@ -4,7 +4,7 @@ class DashboardPage{
         this.products = page.locator(".card-body");
         this.productText =  page.locator(".card-body b");
         this.cart = page.locator("[routerlink*='cart']");
-
+         this.orders = page.locator("button[routerlink*='myorders']");
 
 
     }
@@ -26,5 +26,9 @@ class DashboardPage{
     async navigateToCart(){ // and here we create methods and use our locators 
         await this.cart.click();
     }
+    async navigateToOrders()
+{
+    await this.orders.click();
+}
 }
 module.exports = {DashboardPage}
