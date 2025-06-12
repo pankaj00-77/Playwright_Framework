@@ -53,7 +53,7 @@ test ('Upload download excel validation',async ({page})=>{
         await page.locator("#fileinput").setInputFiles("C:/Users/Pankaj/Downloads/download.xlsx");//and it will upload that edited file to the inputfile location
 // page.pause();
         // const textLocator = await page.getByText(texttoChange);
-        const desireText = await page.getByRole('row').filter({has:page.getByText(texttoChange)});
+        const desireText = await page.getByRole('row').filter({has:page.getByText(textToReplace)});
         await expect(desireText).toContainText(textToReplace);
 
 

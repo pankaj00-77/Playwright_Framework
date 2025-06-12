@@ -1,5 +1,5 @@
 const {test , expect , request}=  require('@playwright/test');
-const {APIUtils} = require('./APIUtils/APIUtils');
+const {APIUtils} = require('../Utils/APIUtils');
 const { json } = require('stream/consumers');
 
 const loginPayLoad={userEmail: "rajpal1996kumar@gmail.com", userPassword: "POPpopcon22"}

@@ -17,7 +17,7 @@ test('browser context playwright test', async ({browser})=>{
      await password.fill("PANApana2@");// to locate the web element and enter the details
      await login.click();
      console.log(await page.locator("[style*='block']").textContent()); //text Content is used for to get the text from the selected web element
-    await expect(page.locator("[style*='block']")).toContainText("Incrrect");
+    await expect(page.locator("[style*='block']")).toContainText("Incorrect");
     // to clean the username and password field
     username.fill("");
     password.fill("");

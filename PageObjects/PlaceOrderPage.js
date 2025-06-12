@@ -13,9 +13,9 @@ class PlaceOrderPage{
         this.orderConfirmationText = page.locator(".hero-primary");
         this.orderId = page.locator(".em-spacer-1 .ng-star-inserted");
     }
-    async searchCountryAndSelect(countryName){
-        console.log("countryName",countryName);
-     await this.countryInput.pressSequentially("ind",{ delay: 100 });
+    async searchCountryAndSelect(countryCode,countryName){
+        console.log(countryCode,countryName);
+     await this.countryInput.pressSequentially(countryCode,{ delay: 100 });
    await this.dropdown.waitFor();
     const optionsCount = await this.dropdown.locator("button").count();
    for (let i = 0; i < optionsCount; ++i) {

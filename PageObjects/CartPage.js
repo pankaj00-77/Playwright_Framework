@@ -4,16 +4,15 @@ class CartPage{
     constructor(page){ 
         this.page = page;
         this.productCard = page.locator("div li");
-        this.checkText = page.locator("h3:has-text('ZARA COAT 3')");
         this.checkout = page.locator("text=Checkout");
 
         //productIsVisible Locators
 
     }
 
-    async productIsVisible(){
+    async productIsVisible(productName){
         await this.productCard.first().waitFor();
-           const bool = await this.checkText.isVisible();
+           const bool = await this.page.locator("h3:has-text('"+productName+"')").isVisible();
            expect(bool).toBeTruthy();
            
     }

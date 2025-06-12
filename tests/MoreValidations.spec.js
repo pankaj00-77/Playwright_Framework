@@ -1,4 +1,5 @@
-const {test, expect} =  require('@playwright/test')
+const {test, expect} =  require('@playwright/test');
+const path = require('path');
 
 test('popup valitations', async({page})=>{
 
@@ -19,9 +20,17 @@ test('popup valitations', async({page})=>{
     const textCheck = await framespage.locator(".text h2").textContent();
     console.log(textCheck.split(" ")[1]);
 
+});
+
+test('@ss Screenshot and visual comparison', async({page})=>{
+
+    await page.goto("https://rahulshettyacademy.com/AutomationPractice/");
+    
+
+    await expect( page.locator("#displayed-text")).toBeVisible();
+    await page.locator("#hide-textbox").click();
+    await page.screenshot({path:'screenshot.png'});
+    await expect( page.locator("#displayed-text")).toBeHidden();
 
 
-
-
-
-})
+});
